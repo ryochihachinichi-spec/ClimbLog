@@ -1,0 +1,572 @@
+﻿body {
+    font-family: sans-serif;
+    margin: 20px;
+    max-width: 900px;
+}
+
+
+/* ========================================
+   基本ボタン
+======================================== */
+
+button,
+.cameraButton {
+    display: inline-block;
+    padding: 12px 18px;
+    font-size: 16px;
+    background: #333;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+
+    button:hover,
+    .cameraButton:hover {
+        opacity: 0.85;
+    }
+
+
+/* カメラボタン */
+
+.cameraButton {
+    font-size: 18px;
+}
+
+
+/* ファイル選択 */
+
+input[type="file"] {
+    display: none;
+}
+
+
+/* ========================================
+   テキスト入力
+======================================== */
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    max-width: 250px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+
+input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    width: 80px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   ツール
+======================================== */
+
+.toolSection {
+    margin-top: 18px;
+}
+
+
+.toolTitle {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+
+#markerTools,
+#sizeTools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+/* マーカー種類 */
+
+.markerTool,
+.sizeTool {
+    background: #eeeeee;
+    color: #222;
+    border: 2px solid #cccccc;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+
+    /* 選択中 */
+
+    .markerTool.active,
+    .sizeTool.active {
+        background: #222;
+        color: white;
+        border-color: #222;
+    }
+
+
+/* ========================================
+   写真
+======================================== */
+
+#wallContainer {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+
+#wallImage {
+    display: none;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+#markers {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+
+/* ========================================
+   マーカー共通
+======================================== */
+
+.marker {
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    line-height: 1;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+
+    /* ========================================
+   マーカーサイズ
+======================================== */
+
+    .marker.small {
+        width: 22px;
+        height: 22px;
+        font-size: 13px;
+    }
+
+
+    .marker.medium {
+        width: 30px;
+        height: 30px;
+        font-size: 17px;
+    }
+
+
+    .marker.large {
+        width: 42px;
+        height: 42px;
+        font-size: 23px;
+    }
+
+
+    /* ========================================
+   スタート
+======================================== */
+
+    .marker.start {
+        background: #1976d2;
+        color: white;
+        border: 2px solid white;
+    }
+
+
+    /* ========================================
+   使用ホールド
+======================================== */
+
+    .marker.hold {
+        background: transparent;
+        color: #1976d2;
+        border: 3px solid #1976d2;
+    }
+
+
+    /* ========================================
+   トップ
+======================================== */
+
+    .marker.goal {
+        background: #d32f2f;
+        color: white;
+        border: 2px solid white;
+    }
+
+
+    /* ========================================
+   加点
+======================================== */
+
+    .marker.zone {
+        background: #ffb300;
+        color: #111;
+        border: 2px solid white;
+    }
+
+
+/* ========================================
+   記録情報
+======================================== */
+
+#recordInfo {
+    margin-top: 30px;
+    max-width: 600px;
+}
+
+
+.inputSection {
+    margin-top: 20px;
+    padding-bottom: 5px;
+}
+
+
+    .inputSection label,
+    .inputLabel {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+
+/* グレード */
+
+#grade {
+    padding: 10px;
+    font-size: 16px;
+    min-width: 180px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+}
+
+
+/* 完登ボタン */
+
+#completionTools {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+
+.completionButton {
+    background: #eeeeee;
+    color: #222;
+    border: 2px solid #cccccc;
+    padding: 10px 14px;
+}
+
+
+    .completionButton.active {
+        background: #333;
+        color: white;
+        border-color: #333;
+    }
+
+
+/* メモ */
+
+#memo {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    resize: vertical;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+}
+
+
+/* ========================================
+   保存ボタン
+======================================== */
+
+.saveButton {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 500px;
+    padding: 16px;
+    font-size: 18px;
+    background: #1976d2;
+}
+
+
+/* ========================================
+   ホーム画面
+======================================== */
+
+#home button {
+    margin-right: 8px;
+    margin-bottom: 10px;
+}
+
+
+/* ========================================
+   履歴画面
+======================================== */
+
+#history {
+    max-width: 800px;
+}
+
+
+#historyList {
+    margin-top: 20px;
+}
+
+
+/* 履歴カード */
+
+.historyItem {
+    border: 1px solid #d0d0d0;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+
+
+    .historyItem:hover {
+        background: #f7f9fc;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        transform: translateY(-1px);
+    }
+
+
+/* 日時 */
+
+.historyDate {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+
+/* ジム名 */
+
+.historyGym {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+
+/* グレードなど */
+
+.historyInfo {
+    font-size: 16px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+/* 完登 */
+
+.completed {
+    color: #1976d2;
+    font-weight: bold;
+}
+
+
+/* 未完登 */
+
+.notCompleted {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+
+/* 履歴なし */
+
+.noHistory {
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+
+/* ========================================
+   詳細画面
+======================================== */
+
+#detail {
+    max-width: 800px;
+}
+
+
+/* 戻るボタン */
+
+#backHistoryButton {
+    margin-bottom: 10px;
+}
+
+
+/* 日時 */
+
+.detailDate {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+
+/* ジム */
+
+.detailGym {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+
+/* ========================================
+   詳細写真
+======================================== */
+
+#detailPhotoContainer {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+
+#detailPhoto {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+/* 詳細写真のマーカー */
+
+#detailMarkers {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+
+/* ========================================
+   詳細情報
+======================================== */
+
+#detailInfo {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    max-width: 600px;
+}
+
+
+.detailRow {
+    display: flex;
+    padding: 10px 0;
+    font-size: 17px;
+    border-bottom: 1px solid #eee;
+}
+
+
+    .detailRow:last-child {
+        border-bottom: none;
+    }
+
+
+.detailLabel {
+    font-weight: bold;
+    display: inline-block;
+    min-width: 120px;
+}
+
+
+/* ========================================
+   詳細メモ
+======================================== */
+
+.detailMemoBox {
+    max-width: 600px;
+    margin-top: 20px;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+
+#detailMemo {
+    margin-top: 10px;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    color: #333;
+}
+
+
+/* ========================================
+   履歴ボタン
+======================================== */
+
+.historyButtonArea {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #eeeeee;
+    flex-wrap: wrap;
+}
+
+
+.historyDetailButton {
+    background: #555;
+    padding: 9px 14px;
+    font-size: 14px;
+}
+
+
+.historyDeleteButton {
+    background: #d32f2f;
+    padding: 9px 14px;
+    font-size: 14px;
+}

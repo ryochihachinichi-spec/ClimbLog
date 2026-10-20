@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Climb Log</title>
+
+    <link rel="manifest" href="/manifest.json">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>🧗 Climb Log</h1>
+
+
+    <!-- ========================================
+         ホーム画面
+    ========================================= -->
+
+    <div id="home">
+
+        <p>クライミング記録アプリ</p>
+
+        <button id="startButton">
+            記録を開始
+        </button>
+
+        <button id="historyButton">
+            📚 履歴を見る
+        </button>
+
+
+        <div class="backupArea">
+
+            <button id="backupButton">
+                📦 バックアップ
+            </button>
+
+            <button id="restoreButton">
+                📥 取り込み
+            </button>
+
+            <input type="file"
+                   id="restoreFileInput"
+                   accept=".json,application/json">
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================
+         記録画面
+    ========================================= -->
+
+    <div id="record" style="display:none;">
+
+        <button id="backHomeFromRecordButton">
+            ← ホームに戻る
+        </button>
+
+        <h2>今日の記録</h2>
+
+        <label>
+            ジム
+            <input type="text"
+                   id="gymName"
+                   placeholder="ジム名">
+        </label>
+
+        <br><br>
+
+        <label for="photoInput" class="cameraButton">
+            📷 壁を撮影
+        </label>
+
+        <input type="file"
+               id="photoInput"
+               accept="image/*"
+               capture="environment">
+
+
+        <!-- マーカー種類 -->
+
+        <div class="toolSection">
+
+            <div class="toolTitle">
+                マーカー
+            </div>
+
+            <div id="markerTools">
+
+                <button type="button"
+                        class="markerTool active"
+                        data-type="start">
+                    S スタート
+                </button>
+
+                <button type="button"
+                        class="markerTool"
+                        data-type="hold">
+                    ○ 使用
+                </button>
+
+                <button type="button"
+                        class="markerTool"
+                        data-type="goal">
+                    G トップ
+                </button>
+
+                <button type="button"
+                        class="markerTool"
+                        data-type="zone">
+                    Z 加点
+                </button>
+
+                <button type="button"
+                        class="markerTool"
+                        data-type="erase">
+                    消去
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- マーカーサイズ -->
+
+        <div class="toolSection">
+
+            <div class="toolTitle">
+                マーカーサイズ
+            </div>
+
+            <div id="sizeTools">
+
+                <button type="button"
+                        class="sizeTool"
+                        data-size="small">
+                    小
+                </button>
+
+                <button type="button"
+                        class="sizeTool active"
+                        data-size="medium">
+                    中
+                </button>
+
+                <button type="button"
+                        class="sizeTool"
+                        data-size="large">
+                    大
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- 写真 -->
+
+        <div id="wallContainer">
+
+            <img id="wallImage">
+
+            <div id="markers"></div>
+
+        </div>
+
+
+        <!-- 登りの情報 -->
+
+        <div id="recordInfo">
+
+            <div class="inputSection">
+
+                <label for="grade">
+                    グレード
+                </label>
+
+                <select id="grade">
+
+                    <option value="">選択してください</option>
+
+                    <option value="8級">8級</option>
+                    <option value="7級">7級</option>
+                    <option value="6級">6級</option>
+                    <option value="5級">5級</option>
+                    <option value="4級">4級</option>
+                    <option value="3級">3級</option>
+                    <option value="2級">2級</option>
+                    <option value="1級">1級</option>
+                    <option value="初段">初段</option>
+                    <option value="二段">二段</option>
+                    <option value="三段">三段</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="inputSection">
+
+                <label for="attempts">
+                    トライ回数
+                </label>
+
+                <input type="number"
+                       id="attempts"
+                       min="1"
+                       value="1">
+
+                <span>回</span>
+
+            </div>
+
+
+            <div class="inputSection">
+
+                <div class="inputLabel">
+                    完登
+                </div>
+
+                <div id="completionTools">
+
+                    <button type="button"
+                            class="completionButton active"
+                            data-completed="true">
+                        ○ 完登
+                    </button>
+
+                    <button type="button"
+                            class="completionButton"
+                            data-completed="false">
+                        × 未完登
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="inputSection">
+
+                <label for="memo">
+                    メモ
+                </label>
+
+                <textarea id="memo"
+                          rows="4"
+                          placeholder="登ったときのメモ"></textarea>
+
+            </div>
+
+
+            <button id="saveButton"
+                    class="saveButton">
+                💾 この記録を保存
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================
+         履歴画面
+    ========================================= -->
+
+    <div id="history"
+         style="display:none;">
+
+        <h2>📚 クライミング履歴</h2>
+
+        <button id="backHomeButton">
+            ← ホームに戻る
+        </button>
+
+        <div id="historyList">
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================
+         詳細画面
+    ========================================= -->
+
+    <div id="detail"
+         style="display:none;">
+
+        <button id="backHistoryButton">
+            ← 履歴に戻る
+        </button>
+
+
+        <button id="editRecordButton">
+            ✏️ この記録を編集
+        </button>
+
+
+        <h2>📖 記録詳細</h2>
+
+
+        <div class="detailDate"
+             id="detailDate">
+        </div>
+
+
+        <div class="detailGym"
+             id="detailGym">
+        </div>
+
+
+        <!-- 保存した写真 -->
+
+        <div id="detailPhotoContainer">
+
+            <img id="detailPhoto">
+
+            <div id="detailMarkers"></div>
+
+        </div>
+
+
+        <!-- 記録情報 -->
+
+        <div id="detailInfo">
+
+            <div class="detailRow">
+
+                <span class="detailLabel">
+                    グレード
+                </span>
+
+                <span id="detailGrade">
+                </span>
+
+            </div>
+
+
+            <div class="detailRow">
+
+                <span class="detailLabel">
+                    トライ回数
+                </span>
+
+                <span id="detailAttempts">
+                </span>
+
+            </div>
+
+
+            <div class="detailRow">
+
+                <span class="detailLabel">
+                    完登
+                </span>
+
+                <span id="detailCompleted">
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- メモ -->
+
+        <div class="detailMemoBox">
+
+            <div class="detailLabel">
+                メモ
+            </div>
+
+            <div id="detailMemo">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>
