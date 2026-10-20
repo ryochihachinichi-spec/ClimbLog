@@ -2508,7 +2508,7 @@ if ("serviceWorker" in navigator) {
         function () {
 
             navigator.serviceWorker.register(
-                "/service-worker.js"
+                "./service-worker.js"
             )
                 .then(
                     function (registration) {
