@@ -64,12 +64,64 @@
 
         <h2>今日の記録</h2>
 
-        <label>
-            ジム
-            <input type="text"
-                   id="gymName"
-                   placeholder="ジム名">
-        </label>
+        <label for="gymSelect">
+    ジム
+</label>
+
+<select id="gymSelect">
+
+    <option value="">選択してください</option>
+
+    <option value="クライミングジム GooFee">クライミングジム GooFee</option>
+    <option value="クライミングジム WHITE ROCK">クライミングジム WHITE ROCK</option>
+    <option value="クライミングジム RANBO">クライミングジム RANBO</option>
+    <option value="クライミングジム ZE-RO 伊勢崎店">クライミングジム ZE-RO 伊勢崎店</option>
+    <option value="クライミングジム ウォールストリート">クライミングジム ウォールストリート</option>
+    <option value="Coloré（コロレ）Bouldering Gym">Coloré（コロレ）Bouldering Gym</option>
+    <option value="Blue Bird Bouldering Gym">Blue Bird Bouldering Gym</option>
+    <option value="And Energy Bouldering">And Energy Bouldering</option>
+    <option value="Bouldering Spot Landmark">Bouldering Spot Landmark</option>
+    <option value="NOBOROCK 大宮店">NOBOROCK 大宮店</option>
+    <option value="エナジークライミングジム浦和店">エナジークライミングジム浦和店</option>
+    <option value="Monolithe ボルダリングジム川越">Monolithe ボルダリングジム川越</option>
+    <option value="PUMP1 KAWAGUCHI">PUMP1 KAWAGUCHI</option>
+    <option value="Lutra Lutra">Lutra Lutra</option>
+    <option value="深谷クライミングヴィレッジ">深谷クライミングヴィレッジ</option>
+    <option value="Next Gen Bouldering">Next Gen Bouldering</option>
+    <option value="Walrus">Walrus</option>
+    <option value="ZE-RO さいたま店">ZE-RO さいたま店</option>
+    <option value="OKKU ROCK">OKKU ROCK</option>
+
+    <option value="その他">その他</option>
+
+</select>
+
+<div id="gymOtherContainer" style="display:none;">
+
+    <input type="text"
+           id="gymOther"
+           placeholder="ジム名を入力">
+
+</div>
+
+<div class="inputSection">
+
+    <label for="wallType">
+        壁の種類
+    </label>
+
+    <select id="wallType">
+
+        <option value="">選択してください</option>
+        <option value="スラブ">スラブ</option>
+        <option value="垂壁">垂壁</option>
+        <option value="傾斜">傾斜</option>
+        <option value="強傾斜">強傾斜</option>
+        <option value="その他">その他</option>
+
+    </select>
+
+</div>
 
         <br><br>
 
@@ -91,41 +143,47 @@
                 マーカー
             </div>
 
-            <div id="markerTools">
+<div id="markerTools">
 
-                <button type="button"
-                        class="markerTool active"
-                        data-type="start">
-                    S スタート
-                </button>
+    <button type="button"
+            class="markerTool active"
+            data-type="start">
+        S スタート
+    </button>
 
-                <button type="button"
-                        class="markerTool"
-                        data-type="hold">
-                    ○ 使用
-                </button>
+    <button type="button"
+            class="markerTool"
+            data-type="zone">
+        Z ゾーン
+    </button>
 
-                <button type="button"
-                        class="markerTool"
-                        data-type="goal">
-                    G トップ
-                </button>
+    <button type="button"
+            class="markerTool"
+            data-type="goal">
+        T トップ
+    </button>
 
-                <button type="button"
-                        class="markerTool"
-                        data-type="zone">
-                    Z 加点
-                </button>
+    <button type="button"
+            class="markerTool"
+            data-type="hold">
+        ○ 使用
+    </button>
 
-                <button type="button"
-                        class="markerTool"
-                        data-type="erase">
-                    消去
-                </button>
+    <button type="button"
+            class="markerTool"
+            data-type="core">
+        ◎ 核心チェック
+    </button>
 
-            </div>
+    <button type="button"
+            class="markerTool"
+            data-type="erase">
+        消 消去
+    </button>
 
-        </div>
+    </div>
+            
+</div>
 
 
         <!-- マーカーサイズ -->
@@ -154,6 +212,12 @@
                         class="sizeTool"
                         data-size="large">
                     大
+                </button>
+
+                <button type="button"
+                        class="sizeTool"
+                        data-size="extra-large">
+                    特大
                 </button>
 
             </div>
@@ -203,46 +267,180 @@
             </div>
 
 
-            <div class="inputSection">
+<div class="inputSection">
 
-                <label for="attempts">
-                    トライ回数
-                </label>
+    <div class="inputLabel">
+        トライ結果
+    </div>
 
-                <input type="number"
-                       id="attempts"
-                       min="1"
-                       value="1">
+    <table class="attemptTable">
 
-                <span>回</span>
+        <thead>
+            <tr>
+                <th>トライ</th>
+                <th>Z</th>
+                <th>T</th>
+            </tr>
+        </thead>
 
-            </div>
+        <tbody>
 
-
-            <div class="inputSection">
-
-                <div class="inputLabel">
-                    完登
-                </div>
-
-                <div id="completionTools">
-
+            <tr>
+                <td>1</td>
+                <td>
                     <button type="button"
-                            class="completionButton active"
-                            data-completed="true">
-                        ○ 完登
+                            class="attemptButton"
+                            data-attempt="1"
+                            data-result="Z">
+                        ○
                     </button>
-
+                </td>
+                <td>
                     <button type="button"
-                            class="completionButton"
-                            data-completed="false">
-                        × 未完登
+                            class="attemptButton"
+                            data-attempt="1"
+                            data-result="T">
+                        ○
                     </button>
+                </td>
+            </tr>
 
-                </div>
+            <tr>
+                <td>2</td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="2"
+                            data-result="Z">
+                        ○
+                    </button>
+                </td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="2"
+                            data-result="T">
+                        ○
+                    </button>
+                </td>
+            </tr>
 
-            </div>
+            <tr>
+                <td>3</td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="3"
+                            data-result="Z">
+                        ○
+                    </button>
+                </td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="3"
+                            data-result="T">
+                        ○
+                    </button>
+                </td>
+            </tr>
 
+            <tr>
+                <td>4</td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="4"
+                            data-result="Z">
+                        ○
+                    </button>
+                </td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="4"
+                            data-result="T">
+                        ○
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="5"
+                            data-result="Z">
+                        ○
+                    </button>
+                </td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="5"
+                            data-result="T">
+                        ○
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>6</td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="6"
+                            data-result="Z">
+                        ○
+                    </button>
+                </td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="6"
+                            data-result="T">
+                        ○
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>7以上</td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="7+"
+                            data-result="Z">
+                        ○
+                    </button>
+                </td>
+                <td>
+                    <button type="button"
+                            class="attemptButton"
+                            data-attempt="7+"
+                            data-result="T">
+                        ○
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <div id="autoCompleted"
+         class="autoCompleted"
+         style="display:none;">
+        完登
+    </div>
+
+    <div id="completionAttempt"
+         class="completionAttempt"
+         style="display:none;">
+    </div>
+
+</div>
 
             <div class="inputSection">
 
@@ -369,7 +567,49 @@
 
         </div>
 
+        <!-- 壁の種類 -->
 
+<div class="detailRow">
+
+    <span class="detailLabel">
+        壁の種類
+    </span>
+
+    <span id="detailWallType">
+    </span>
+
+</div>
+
+
+<!-- トライ結果 -->
+
+<div class="detailMemoBox">
+
+    <div class="detailLabel">
+        トライ結果
+    </div>
+
+    <table class="attemptTable">
+
+        <thead>
+            <tr>
+                <th>トライ</th>
+                <th>Z</th>
+                <th>T</th>
+            </tr>
+        </thead>
+
+        <tbody id="detailAttemptBody">
+        </tbody>
+
+    </table>
+
+    <div id="detailCompletionAttempt">
+    </div>
+
+</div>
+        
+        
         <!-- メモ -->
 
         <div class="detailMemoBox">
