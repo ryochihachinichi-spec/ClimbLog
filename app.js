@@ -16,11 +16,10 @@ const backHistoryButton = document.getElementById("backHistoryButton");
 
 const editRecordButton = document.getElementById("editRecordButton");
 
-const homeSection = document.getElementById("homeSection");
-const recordSection = document.getElementById("recordSection");
-const historySection = document.getElementById("historySection");
-const detailSection = document.getElementById("detailSection");
-
+const homeSection = document.getElementById("home");
+const recordSection = document.getElementById("record");
+const historySection = document.getElementById("history");
+const detailSection = document.getElementById("detail");
 const historyList = document.getElementById("historyList");
 
 const photoInput = document.getElementById("photoInput");
@@ -44,10 +43,10 @@ const saveButton = document.getElementById("saveButton");
 
 const backupButton = document.getElementById("backupButton");
 const restoreButton = document.getElementById("restoreButton");
-const restoreInput = document.getElementById("restoreInput");
+const restoreInput = document.getElementById("restoreFileInput");
 
 const detailGym = document.getElementById("detailGym");
-const detailDateTime = document.getElementById("detailDateTime");
+const detailDateTime = document.getElementById("detailDate");
 const detailGrade = document.getElementById("detailGrade");
 const detailAttempts = document.getElementById("detailAttempts");
 const detailCompleted = document.getElementById("detailCompleted");
