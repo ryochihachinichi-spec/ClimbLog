@@ -136,6 +136,10 @@ input[type="number"] {
     opacity: 0.85;
 }
 
+.attemptButton {
+    color: #000;
+}
+
 
 /* ========================================
    自動完登表示
