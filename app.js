@@ -442,41 +442,40 @@ function renderMarkers() {
 let attemptData = [
     {
         attempt: "1",
-        Z: false,
-        T: false
+        Z: "",
+        T: ""
     },
     {
         attempt: "2",
-        Z: false,
-        T: false
+        Z: "",
+        T: ""
     },
     {
         attempt: "3",
-        Z: false,
-        T: false
+        Z: "",
+        T: ""
     },
     {
         attempt: "4",
-        Z: false,
-        T: false
+        Z: "",
+        T: ""
     },
     {
         attempt: "5",
-        Z: false,
-        T: false
+        Z: "",
+        T: ""
     },
     {
         attempt: "6",
-        Z: false,
-        T: false
+        Z: "",
+        T: ""
     },
     {
         attempt: "7+",
-        Z: false,
-        T: false
+        Z: "",
+        T: ""
     }
 ];
-
 
 // ------------------------------
 // トライ結果ボタン
@@ -498,7 +497,13 @@ attemptButtons.forEach(function (button) {
             return;
         }
 
-        target[result] = !target[result];
+        if (target[result] === "") {
+    　　　　target[result] = "○";
+　　　　} else if (target[result] === "○") {
+    　　　　target[result] = "×";
+　　　　} else {
+    　　　　target[result] = "";
+　　　　}
 
         renderAttemptButtons();
 
@@ -527,11 +532,11 @@ function renderAttemptButtons() {
             return;
         }
 
-        const active = target[result];
+        const resultValue = target[result];
 
-        button.textContent = active ? "○" : "×";
+        button.textContent = resultValue;
 
-        if (active) {
+        if (resultValue === "○") {
 
             button.classList.add("active");
 
@@ -541,7 +546,6 @@ function renderAttemptButtons() {
         }
     });
 }
-
 
 // ------------------------------
 // 完登判定
@@ -553,7 +557,7 @@ function getCompletionAttempt() {
 
         const item = attemptData[i];
 
-        if (item.T === true) {
+        if (item.T === "○") {
 
             return item.attempt;
         }
@@ -614,7 +618,7 @@ function getAttemptCountText(data) {
 
     data.forEach(function (item) {
 
-        if (item.Z || item.T) {
+        if (item.Z !== "" || item.T !== "") {
 
             lastAttempt = item.attempt;
         }
@@ -868,43 +872,42 @@ function resetRecordForm() {
     markerData = [];
 
     attemptData = [
-        {
-            attempt: "1",
-            Z: false,
-            T: false
-        },
-        {
-            attempt: "2",
-            Z: false,
-            T: false
-        },
-        {
-            attempt: "3",
-            Z: false,
-            T: false
-        },
-        {
-            attempt: "4",
-            Z: false,
-            T: false
-        },
-        {
-            attempt: "5",
-            Z: false,
-            T: false
-        },
-        {
-            attempt: "6",
-            Z: false,
-            T: false
-        },
-        {
-            attempt: "7+",
-            Z: false,
-            T: false
-        }
-    ];
-
+    {
+        attempt: "1",
+        Z: "",
+        T: ""
+    },
+    {
+        attempt: "2",
+        Z: "",
+        T: ""
+    },
+    {
+        attempt: "3",
+        Z: "",
+        T: ""
+    },
+    {
+        attempt: "4",
+        Z: "",
+        T: ""
+    },
+    {
+        attempt: "5",
+        Z: "",
+        T: ""
+    },
+    {
+        attempt: "6",
+        Z: "",
+        T: ""
+    },
+    {
+        attempt: "7+",
+        Z: "",
+        T: ""
+    }
+];
     currentCompleted = false;
 
     renderAttemptButtons();
@@ -1202,24 +1205,24 @@ function renderDetailAttempts(
         });
 
         const zResult =
-            item && item.Z
-                ? "○"
-                : "×";
+            item ? item.Z : "";
 
         const tResult =
-            item && item.T
-                ? "○"
-                : "×";
+            item ? item.T : "";
 
         const zClass =
-            item && item.Z
+            zResult === "○"
                 ? "result-ok"
-                : "result-ng";
+                : zResult === "×"
+                    ? "result-ng"
+                    : "";
 
         const tClass =
-            item && item.T
+            tResult === "○"
                 ? "result-ok"
-                : "result-ng";
+                : tResult === "×"
+                    ? "result-ng"
+                    : "";
 
         const row =
             document.createElement("tr");
@@ -1253,7 +1256,6 @@ function renderDetailAttempts(
             "";
     }
 }
-
 
 // ------------------------------
 // 詳細画面のマーカー表示
@@ -1463,42 +1465,41 @@ function startEditingRecord(recordId) {
             attemptData = [
                 {
                     attempt: "1",
-                    Z: false,
-                    T: false
+                    Z: "",
+                    T: ""
                 },
                 {
                     attempt: "2",
-                    Z: false,
-                    T: false
+                    Z: "",
+                    T: ""
                 },
                 {
                     attempt: "3",
-                    Z: false,
-                    T: false
+                    Z: "",
+                    T: ""
                 },
                 {
                     attempt: "4",
-                    Z: false,
-                    T: false
+                    Z: "",
+                    T: ""
                 },
                 {
                     attempt: "5",
-                    Z: false,
-                    T: false
+                    Z: "",
+                    T: ""
                 },
                 {
                     attempt: "6",
-                    Z: false,
-                    T: false
+                    Z: "",
+                    T: ""
                 },
                 {
                     attempt: "7+",
-                    Z: false,
-                    T: false
+                    Z: "",
+                    T: ""
                 }
             ];
         }
-
 
         // --------------------------
         // 完登状態
