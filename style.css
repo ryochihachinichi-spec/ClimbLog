@@ -121,9 +121,15 @@ input[type="number"] {
     border: 1px solid #aaa;
     border-radius: 6px;
     background: white;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: bold;
     cursor: pointer;
+    color: #000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
 
 .attemptButton.active {
@@ -134,10 +140,6 @@ input[type="number"] {
 
 .attemptButton:hover {
     opacity: 0.85;
-}
-
-.attemptButton {
-    color: #000;
 }
 
 
