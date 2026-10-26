@@ -1,4 +1,4 @@
-const CACHE_NAME = "climblog-v1";
+const CACHE_NAME = "climblog-v2";
 
 const CACHE_FILES = [
     "./",
@@ -16,6 +16,9 @@ self.addEventListener("install", function (event) {
             .then(function (cache) {
                 return cache.addAll(CACHE_FILES);
             })
+            .then(function () {
+                return self.skipWaiting();
+            })
     );
 });
 
@@ -32,6 +35,9 @@ self.addEventListener("activate", function (event) {
                             return caches.delete(cacheName);
                         })
                 );
+            })
+            .then(function () {
+                return self.clients.claim();
             })
     );
 });
