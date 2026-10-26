@@ -1067,6 +1067,8 @@ deleteButton.addEventListener("click", function (event) {
         alert("削除に失敗しました。");
     };
 });
+
+            item.appendChild(deleteButton);
             
             item.addEventListener("click", function () {
 
