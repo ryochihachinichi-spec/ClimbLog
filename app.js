@@ -1027,6 +1027,47 @@ function loadHistory() {
                 </div>
             `;
 
+const deleteButton = document.createElement("button");
+deleteButton.type = "button";
+deleteButton.className = "historyDeleteButton";
+deleteButton.textContent = "🗑️ 削除";
+
+deleteButton.addEventListener("click", function (event) {
+    event.stopPropagation();
+
+    const confirmed = confirm(
+        "この記録を削除しますか？"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    const transaction = db.transaction(
+        [STORE_NAME],
+        "readwrite"
+    );
+
+    const store = transaction.objectStore(
+        STORE_NAME
+    );
+
+    const request = store.delete(record.id);
+
+    request.onsuccess = function () {
+        loadHistory();
+    };
+
+    request.onerror = function () {
+        console.error(
+            "削除エラー:",
+            request.error
+        );
+
+        alert("削除に失敗しました。");
+    };
+});
+            
             item.addEventListener("click", function () {
 
                 showDetail(record.id);
