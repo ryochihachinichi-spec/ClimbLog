@@ -67,7 +67,7 @@ input[type="number"] {
 
 
 select {
-    height: 80px;
+    height: 60px;
     box-sizing: border-box;
     padding: 0 12px;
     font-family: inherit;
