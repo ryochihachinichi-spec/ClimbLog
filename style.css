@@ -217,17 +217,21 @@ input[type="number"] {
     width: 52px;
     height: 42px;
     box-sizing: border-box;
+
     background: #eeeeee;
     color: #222;
     border: 2px solid #cccccc;
-    padding: 0;
     border-radius: 8px;
+
+    padding: 0;
     font-size: 15px;
+    line-height: 1;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
 }
+
 
 /* ========================================
    写真
