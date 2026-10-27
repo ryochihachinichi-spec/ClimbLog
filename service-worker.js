@@ -1,4 +1,4 @@
-const CACHE_NAME = "climblog-v4";
+const CACHE_NAME = "climblog-v3";
 
 const CACHE_FILES = [
     "./",
