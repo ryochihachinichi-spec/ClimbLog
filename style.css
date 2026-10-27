@@ -214,14 +214,19 @@ input[type="number"] {
 
 .markerTool,
 .sizeTool {
+    width: 52px;
+    height: 42px;
+    box-sizing: border-box;
     background: #eeeeee;
     color: #222;
     border: 2px solid #cccccc;
-    padding: 10px 14px;
+    padding: 0;
     border-radius: 8px;
     font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 
 /* ========================================
    写真
