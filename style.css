@@ -238,73 +238,47 @@ input[type="number"] {
     box-sizing: border-box;
 }
 
-/* 消しゴム全体 */
+/* 消しゴム */
 .eraserIcon {
     position: relative;
     display: block;
     width: 30px;
-    height: 30px;
+    height: 20px;
+    background: linear-gradient(
+        to right,
+        #6db7df 0%,
+        #6db7df 26%,
+        #eaf5fa 26%,
+        #eaf5fa 74%,
+        #6db7df 74%,
+        #6db7df 100%
+    );
+    border: 2px solid #222;
+    border-radius: 2px;
+    box-sizing: border-box;
 }
 
 /* 上の白い部分 */
 .eraserIcon::before {
     content: "";
     position: absolute;
-    left: 2px;
-    top: 0;
-    width: 26px;
+    left: -2px;
+    top: -13px;
+    width: 30px;
     height: 13px;
     background: white;
     border: 2px solid #222;
     border-bottom: none;
-    border-radius: 8px 8px 0 0;
+    border-radius: 7px 7px 0 0;
     box-sizing: border-box;
 }
 
-/* 消しゴム本体の外枠 */
-.eraserIcon::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 30px;
-    height: 21px;
-    border: 2px solid #222;
-    border-radius: 2px;
-    box-sizing: border-box;
-    pointer-events: none;
-}
-
-/* 青い帯 */
-.eraserBlue {
-    position: absolute;
-    left: 2px;
-    bottom: 2px;
-    width: 26%;
-    height: 17px;
-    background: #6db7df;
-}
-
-/* 白い中央 */
-.eraserWhite {
-    position: absolute;
-    left: 28%;
-    bottom: 2px;
-    width: 44%;
-    height: 17px;
-    background: #eaf5fa;
-}
-
-/* ピンクの帯 */
+/* 中のspanは使用しない */
+.eraserBlue,
+.eraserWhite,
 .eraserPink {
-    position: absolute;
-    right: 2px;
-    bottom: 2px;
-    width: 26%;
-    height: 17px;
-    background: #6db7df;
+    display: none;
 }
-
     /* 選択中 */
 
     .markerTool.active,
