@@ -216,22 +216,23 @@ input[type="number"] {
 .sizeTool {
     width: 52px;
     height: 42px;
+
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 
     background: #eeeeee;
     color: #222;
     border: 2px solid #cccccc;
     border-radius: 8px;
 
-    padding: 0;
     font-size: 15px;
-    line-height: 1;
+    font-weight: normal;
+    line-height: 42px;
+    text-align: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
 }
-
 
 /* ========================================
    写真
