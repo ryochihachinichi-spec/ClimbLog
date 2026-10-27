@@ -718,3 +718,7 @@ select {
     padding: 9px 14px;
     font-size: 14px;
 }
+
+label[for="gymSelect"] {
+    font-weight: bold;
+}
